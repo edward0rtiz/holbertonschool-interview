@@ -36,4 +36,4 @@ def canUnlockAll(boxes):
 print(canUnlockAll(boxes))
 print(type(boxes))
 print(len(boxes))
-print('---->LB:', search_box(boxes, [0], boxes[0]))"""""
+print('---->LB:', search_box(boxes, [0], boxes[0]))""""
