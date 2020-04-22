@@ -12,10 +12,6 @@ def search_box(boxes, unlocked_box, n_box):
     """
     Recursive function to iterate over the boxes and open if the n_box
     is the same as the key_box
-    boxes: input variable
-    unlocked_box: new list
-    n_box: n box that is blocked (list inside a list)
-    return: a single list witht he same values of the boxes variable
     """
     if len(n_box) > 0:
         for box_key in n_box:
@@ -33,7 +29,6 @@ def canUnlockAll(boxes):
     Function that checks with boolean value if the list type and
     length to invoke recursive function was True or not (False)
     """
-
     if type(boxes) is not list:
         return False
     elif (len(boxes)) == 0:
