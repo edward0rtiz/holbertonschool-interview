@@ -1,19 +1,38 @@
 #!/bin/python3
+"""
+Problem: You have n number of locked boxes in front of you.
+         Each box is numbered sequentially from 0 to n - 1
+         and each box may contain keys to the other boxes.
+Task: Write a method that determines if all the boxes can be opened.
+"""
 
-def search_box(boxes, locked_box, n_box):
+
+def search_box(boxes, unlocked_box, n_box):
+    """
+    Recursive function to iterate over the boxes and open if the n_box
+    is the same as the key_box
+    boxes: input variable
+    unlocked_box: new list
+    n_box: n box that is blocked (list inside a list)
+    return: a single list witht he same values of the boxes variable
+    """
     if len(n_box) > 0:
         for box_key in n_box:
             if (box_key < len(boxes)) and (box_key not in n_box):
-                #if (locked_box not in box_key) and (box_key < len(n_box)):
-                locked_box.inser(-1, box_key)
-                search_again = search_box(boxes, locked_box, boxes[box_key])
-                locked_box = search_again
-        return locked_box
+                unlocked_box.insert(-1, box_key)
+                search_again = search_box(boxes, unlocked_box, boxes[box_key])
+                unlocked_box = search_again
+        return unlocked_box
     else:
-        return locked_box
+        return unlocked_box
 
 
 def canUnlockAll(boxes):
+    """
+    Function that checks with boolean value if the list type and
+    length to invoke recursive function was True or not (False)
+    """
+
     if type(boxes) is not list:
         return False
     elif (len(boxes)) == 0:
@@ -26,14 +45,3 @@ def canUnlockAll(boxes):
         return True
     else:
         return False
-
-
-
-
-
-""""boxes = [[1], [2], [3], [4], []]
-
-print(canUnlockAll(boxes))
-print(type(boxes))
-print(len(boxes))
-print('---->LB:', search_box(boxes, [0], boxes[0]))""""
