@@ -19,7 +19,7 @@ def search_box(boxes, unlocked_box, n_box):
     """
     if len(n_box) > 0:
         for box_key in n_box:
-            if (box_key < len(boxes)) and (box_key not in n_box):
+            if (box_key < len(boxes)) and (box_key not in unlocked_box):
                 unlocked_box.insert(-1, box_key)
                 search_again = search_box(boxes, unlocked_box, boxes[box_key])
                 unlocked_box = search_again
@@ -46,3 +46,5 @@ def canUnlockAll(boxes):
         return True
     else:
         return False
+
+
