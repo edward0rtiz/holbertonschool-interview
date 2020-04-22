@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/python3
 
 """
 Problem: You have n number of locked boxes in front of you.
