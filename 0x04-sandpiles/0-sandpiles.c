@@ -1,38 +1,37 @@
 #include <stdlib.h>
 #include <stdio.h>
-
 #include "sandpiles.h"
 
 /**
  * print_grid - print a sandpile grid
  * @grid: tyoe int a sandpile 3 x 3
+ * Return: void
  */
-
 static void print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    printf("=\n");
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-	    {
-		    printf(" ");
-	    }
-	    printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	printf("=\n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+			{
+				printf(" ");
+			}
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 /**
  * if_sandpile - Checks if the grid contains valid
  * sandiles int < 3
  * @grid: type int a sandpile 3 x 3
+ * Return: void
  */
-
 static int if_sandpile(int grid[3][3])
 {
 	int i, j;
@@ -51,8 +50,9 @@ static int if_sandpile(int grid[3][3])
 
 /**
  * sum_grids - sum grids grid1 and grid2
- * @grid: type int a sandpile 3 x 3
- * @grid: type int a sandpile 3 x 3
+ * @grid1: type int a sandpile 3 x 3
+ * @grid2: type int a sandpile 3 x 3
+ * Return: void
  */
 
 static void sum_grids(int grid1[3][3], int grid2[3][3])
@@ -72,6 +72,7 @@ static void sum_grids(int grid1[3][3], int grid2[3][3])
 /**
  * topple - Move across the grid to operate a sum3
  * @grid: type int a sandpile 3 x 3
+ * Return: void
  */
 
 void topple(int grid[3][3])
@@ -111,6 +112,7 @@ void topple(int grid[3][3])
  * sandpiles_sum -sum iteratively two sandpiles
  * @grid1: type int a sandpile 3 x 3
  * @grid2: type int a sandpile 3 x 3
+ * Return: void
  */
 
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
