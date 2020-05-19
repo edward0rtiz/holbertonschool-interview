@@ -11,6 +11,7 @@
 | [0x01-insert_in_sorted_linked_list](https://github.com/edward0rtiz/holbertonschool-interview/tree/master/0x01-insert_in_sorted_linked_list)| Sorted linked list challenge | 
 | [0x02-heap_insert](https://github.com/edward0rtiz/holbertonschool-interview/tree/master/0x02-heap_insert)| Heap insert algorithm challenge | 
 | [0x03-minimum_operations](https://github.com/edward0rtiz/holbertonschool-interview/tree/master/0x03-minimum_operations)| Minimum operations challenge | 
+| [0x04-sandpiles](https://github.com/edward0rtiz/holbertonschool-interview/tree/master/0x04-sandpiles)| Sandpiles challenge | 
 
 
 # Stack :books:
