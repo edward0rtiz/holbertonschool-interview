@@ -5,7 +5,7 @@
 /**
  * is_palindrome - Check if the linked list is a palindrome
  * @head: Type listint_s double pointer of node
- * return: 1 if is a palindrome 0 otherwise
+ * Return: 1 if is a palindrome 0 otherwise
  */
 
 int is_palindrome(listint_t **head)
@@ -13,7 +13,7 @@ int is_palindrome(listint_t **head)
 	if (head == NULL)
 		return (1);
 	else
-		return(recursive_palindrome(head, *head));
+		return (recursive_palindrome(head, *head));
 }
 
 /**
@@ -21,7 +21,7 @@ int is_palindrome(listint_t **head)
  * in parallel
  * @head: type listint_s double pointer of the node aka head
  * @tail: type listint_s double pointer of the last node aka tail
- * return: 1 if is a palindrome otherwise 0
+ * Return: 1 if is a palindrome otherwise 0
  */
 int recursive_palindrome(listint_t **head, listint_t *tail)
 {
