@@ -8,18 +8,19 @@
  * return: 1 if is a palindrome 0 otherwise
  */
 
-int is_palindrome(listint_s **head)
+int is_palindrome(listint_t **head)
 {
 	if (head == NULL)
 		return (1);
 	else
-		return(recursive_palindrome(head, **head));
+		return(recursive_palindrome(head, *head));
 }
 
-int recursive_palindrome(listint_s *head, listint_t *tail);
+int recursive_palindrome(listint_t **head, listint_t *tail)
 {
 	if (tail == NULL)
-		return(1);
+		return (1);
+
 	if (recursive_palindrome(head, tail->next) && (*head)->n == tail->n)
 	{
 		*head = (*head)->next;
