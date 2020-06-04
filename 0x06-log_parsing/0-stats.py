@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+"""Script to get stats from a request"""
 
 import sys
 
 codes = {}
-status_codes = [200, 301, 400, 401, 403, 404, 405, 500]
+status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
 count = 0
 size = 0
 
@@ -11,34 +12,34 @@ try:
     for ln in sys.stdin:
         if count == 10:
             print("File size: {}".format(size))
-            for key in codes:
-                print("{}: {}".format(key, status_codes[key]))
+            for key in sorted(codes):
+                print("{}: {}".format(key, codes[key]))
             count = 1
         else:
             count += 1
-        line = ln.split()
+
+        ln = ln.split()
 
         try:
-            size = size + int(line[-1])
-            print(line)
-        except (ValueError, IndexError):
+            size = size + int(ln[-1])
+        except (IndexError, ValueError):
             pass
+
         try:
-            if line[-1] in status_codes:
-                if codes.get(line[-2], -1) == -1:
-                    codes[line[-2]] = 1
+            if ln[-2] in status_codes:
+                if codes.get(ln[-2], -1) == -1:
+                    codes[ln[-2]] = 1
                 else:
-                    codes[line[-2]] += 1
+                    codes[ln[-2]] += 1
         except IndexError:
             pass
 
     print("File size: {}".format(size))
-    for key in codes:
-        print("{}: {}".format(key, status_codes[key]))
+    for key in sorted(codes):
+        print("{}: {}".format(key, codes[key]))
 
 except KeyboardInterrupt:
     print("File size: {}".format(size))
-    for key in codes:
-        print("{}: {}".format(key, status_codes[key]))
+    for key in sorted(codes):
+        print("{}: {}".format(key, codes[key]))
     raise
-
