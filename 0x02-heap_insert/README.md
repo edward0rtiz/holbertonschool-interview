@@ -1,4 +1,4 @@
-# 0x01 Insert in sorted linked list :neckbeard:
+# 0x02 Heap Insert :neckbeard:
 
 > Technical interview challenges
 
