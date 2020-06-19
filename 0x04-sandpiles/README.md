@@ -1,4 +1,4 @@
-# 0x02 Sandpiles :neckbeard:
+# 0x04 Sandpiles :neckbeard:
 
 > Technical interview challenges
 
