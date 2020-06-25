@@ -23,7 +23,7 @@ def validUTF8(data):
         if n_bytes == 0:
             while m & i:
                 n_bytes += 1
-                m = m >> 6
+                m = m >> 1
             if n_bytes == 0:
                 continue
             if n_bytes == 1 or n_bytes > 4:
