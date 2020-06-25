@@ -15,26 +15,21 @@ def validUTF8(data):
 
     n_bytes = 0
 
-    mask1 = 1 << 7
-    #print("-------M2", mask1)
-    mask2 = 1 << 6
-    #print("-------M2", mask2)
+    m1 = 1 << 7
+    m2 = 1 << 6
 
     for i in data:
-        mask = 1 << 7
+        m = 1 << 7
         if n_bytes == 0:
-            while mask & i:
+            while m & i:
                 n_bytes += 1
-                mask = mask >> 1
-                #print("-------M3", mask)
+                m = m >> 6
             if n_bytes == 0:
                 continue
-
             if n_bytes == 1 or n_bytes > 4:
                 return False
         else:
-            if not (i & mask1 and not (i & mask2)):
+            if not (i & m1 and not (i & m2)):
                 return False
         n_bytes -= 1
-    #print("-------NB", n_bytes)
     return n_bytes == 0
