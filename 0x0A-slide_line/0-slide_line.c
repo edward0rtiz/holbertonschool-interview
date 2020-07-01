@@ -52,9 +52,59 @@ int move_right(int *line, size_t size)
 			line[--move] = num_1;
 		}
 	}
-	for (idx = 0 ; idx < move + 1; idx++)
+	return (1);
+}
+
+/**
+ * move_left - Function to move numbers left
+ * @line: type pointer first number in line
+ * @size: size of the array
+ * Return: 1 success otherwise 0
+ *
+ */
+int move_left(int *line, size_t size)
+{
+	int num_1 = 0;
+	int num_2 = 0;
+	size_t count = 0, idx;
+
+	for (idx = count; idx < size; idx++)
 	{
 		line[idx] = 0;
+	}
+	for (idx = 0; idx < size; idx++)
+	{
+		if (line[idx] != 0 && num_1 == 0)
+		{
+			num_1 = line[idx];
+		}
+		else if (line[idx] != 0 && num_1 != 0)
+		{
+			num_2 = line[idx];
+		}
+		if (num_1 != 0 && num_2 != 0)
+		{
+			if (num_1 == num_2)
+			{
+				line[count++] = num_1 + num_2;
+				num_1 = 0;
+				num_2 = 0;
+			}
+			else
+			{
+				line[count++] = num_1;
+				num_1 = num_2;
+				num_2 = 0;
+				if (idx == size - 1)
+				{
+					line[count++] = num_1;
+				}
+			}
+		}
+		else if (num_1 != num_2 && idx == size - 1)
+		{
+			line[count++] = num_1;
+		}
 	}
 	return (1);
 }
