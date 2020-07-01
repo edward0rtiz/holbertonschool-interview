@@ -31,25 +31,25 @@ int move_right(int *line, size_t size)
 		{
 			if (num_1 == num_2)
 			{
-				line[--move] = num_1 + num_2;
+				line[move--] = num_1 + num_2;
 				num_1 = 0;
 				num_2 = 0;
 			}
 			else
 			{
-				line[--move] = num_1;
+				line[move--] = num_1;
 				num_1 = num_2;
 				num_2 = 0;
 				if (idx == 0)
 				{
-					line[--move] = num_1;
+					line[move--] = num_1;
 				}
 			}
 
 		}
 		else if (num_1 != num_2 && idx == 0)
 		{
-			line[--move] = num_1;
+			line[move--] = num_1;
 		}
 	}
 	return (1);
