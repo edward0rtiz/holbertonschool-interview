@@ -3,133 +3,102 @@
 #include "slide_line.h"
 
 /**
- * move_right - Function to move numbers right
- * @line: type pointer first number in line
- * @size: size of the array
- * Return: 1 success otherwise 0
- *
+ * slide_line_left - slides and merges an array of integers to the left
+ * @line: points to an array of integers
+ * @size: Number of elements in array
+ * Return: 1 success, 0 Fail
  */
-
-int move_right(int *line, size_t size)
+int slide_line_left(int *line, size_t size)
 {
-	int num_1 = 0;
-	int num_2 = 0;
-	size_t move = size - 1;
-	size_t idx;
+	int n1 = 0, n2 = 0;
+	size_t count = 0, i;
 
-	for (idx = size - 1; idx < size; idx--)
+	for (i = 0; i < size; i++)
 	{
-		if (num_1 == 0 && line[idx] != 0)
+		if (line[i] != 0 && n1 == 0)
+			n1 = line[i];
+		else if (line[i] != 0 && n1 != 0)
+			n2 = line[i];
+		if (n1 != 0 && n2 != 0)
 		{
-			num_1 = line[idx];
-		}
-		else if (num_1 != 0 && line[idx] != 0)
-		{
-			num_2 = line[idx];
-		}
-		if (num_1 != 0 && num_2 != 0)
-		{
-			if (num_1 == num_2)
+			if (n1 == n2)
 			{
-				line[move--] = num_1 + num_2;
-				num_1 = 0;
-				num_2 = 0;
+				line[count++] = n1 + n2;
+				n1 = 0;
+				n2 = 0;
 			}
 			else
 			{
-				line[move--] = num_1;
-				num_1 = num_2;
-				num_2 = 0;
-				if (idx == 0)
-				{
-					line[move--] = num_1;
-				}
+				line[count++] = n1;
+				n1 = n2;
+				n2 = 0;
+				if (i == size - 1)
+					line[count++] = n1;
 			}
+		}
+		else if (n1 != n2 && i == size - 1)
+			line[count++] = n1;
+	}
+	for (i = count; i < size; i++)
+		line[i] = 0;
 
-		}
-		else if (num_1 != num_2 && idx == 0)
-		{
-			line[move--] = num_1;
-		}
-	}
-	for (idx = 0; idx < move + 1; idx++)
-	{
-		line[idx] = 0;
-	}
 	return (1);
 }
-
 /**
- * move_left - Function to move numbers left
- * @line: type pointer first number in line
- * @size: size of the array
- * Return: 1 success otherwise 0
- *
+ * slide_line_right - slides and merges an array of integers to the right
+ * @line: points to an array of integers
+ * @size: Number of elements in array
+ * Return: 1 success, 0 Fail
  */
-int move_left(int *line, size_t size)
+int slide_line_right(int *line, size_t size)
 {
-	int num_1 = 0;
-	int num_2 = 0;
-	size_t count = 0, idx;
+	int n1 = 0, n2 = 0;
+	size_t count = size - 1, i;
 
-	for (idx = count; idx < size; idx++)
+	for (i = size - 1; i < size; i--)
 	{
-		line[idx] = 0;
-	}
-	for (idx = 0; idx < size; idx++)
-	{
-		if (line[idx] != 0 && num_1 == 0)
+		if (line[i] != 0 && n1 == 0)
+			n1 = line[i];
+		else if (line[i] != 0 && n1 != 0)
+			n2 = line[i];
+		if (n1 != 0 && n2 != 0)
 		{
-			num_1 = line[idx];
-		}
-		else if (line[idx] != 0 && num_1 != 0)
-		{
-			num_2 = line[idx];
-		}
-		if (num_1 != 0 && num_2 != 0)
-		{
-			if (num_1 == num_2)
+			if (n1 == n2)
 			{
-				line[count++] = num_1 + num_2;
-				num_1 = 0;
-				num_2 = 0;
+				line[count--] = n1 + n2;
+				n1 = 0;
+				n2 = 0;
 			}
 			else
 			{
-				line[count++] = num_1;
-				num_1 = num_2;
-				num_2 = 0;
-				if (idx == size - 1)
-				{
-					line[count++] = num_1;
-				}
+				line[count--] = n1;
+				n1 = n2;
+				n2 = 0;
+				if (i == 0)
+					line[count--] = n1;
 			}
 		}
-		else if (num_1 != num_2 && idx == size - 1)
-		{
-			line[count++] = num_1;
-		}
+		else if (n1 != n2 && i == 0)
+			line[count--] = n1;
 	}
+	for (i = 0; i < count + 1; i++)
+		line[i] = 0;
+
 	return (1);
 }
-
 /**
- * slide_line - Function that moves and if apply sum int in the array
- * @line: type pointer in an array of integers
- * @size: Type size_t the number of elements in array
- * @direction: Macros SLIDE_LEFT, SLIDE_RIGHT
- * Return: 1 success otherwise 0
- *
+ * slide_line - slides and merges an array of integers
+ * @line: points to an array of integers
+ * @size: Number of elements in array
+ * @direction: can be either: SLIDE_LEFT, SLIDE_RIGHT
+ * Return: 1 success, 0 Fail
  */
 int slide_line(int *line, size_t size, int direction)
 {
-	if (direction == SLIDE_RIGHT)
-	{
-		return (move_right(line, size));
-	}
+
 	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
-	{
 		return (0);
-	}
-	return (move_left(line, size));
+	if (direction == SLIDE_LEFT)
+		return (slide_line_left(line, size));
+	return (slide_line_right(line, size));
 }
