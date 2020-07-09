@@ -19,11 +19,11 @@ int move_right(int *line, size_t size)
 
 	for (idx = size - 1; idx < size; idx--)
 	{
-		if (num_1 == 0 && line[idx] != 0)
+		if (line[idx] != 0 && num_1 == 0)
 		{
 			num_1 = line[idx];
 		}
-		else if (num_1 != 0 && line[idx] != 0)
+		else if (line[idx] != 0 && num_1 != 0)
 		{
 			num_2 = line[idx];
 		}
@@ -72,10 +72,7 @@ int move_left(int *line, size_t size)
 	int num_2 = 0;
 	size_t count = 0, idx;
 
-	for (idx = count; idx < size; idx++)
-	{
-		line[idx] = 0;
-	}
+
 	for (idx = 0; idx < size; idx++)
 	{
 		if (line[idx] != 0 && num_1 == 0)
@@ -109,6 +106,10 @@ int move_left(int *line, size_t size)
 		{
 			line[count++] = num_1;
 		}
+	}
+	for (idx = count; idx < size; idx++)
+	{
+		line[idx] = 0;
 	}
 	return (1);
 }
