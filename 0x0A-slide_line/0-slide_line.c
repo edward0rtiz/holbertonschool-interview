@@ -52,6 +52,10 @@ int move_right(int *line, size_t size)
 			line[move--] = num_1;
 		}
 	}
+	for (idx = 0; idx < move + 1; idx++)
+	{
+		line[idx] = 0;
+	}
 	return (1);
 }
 
