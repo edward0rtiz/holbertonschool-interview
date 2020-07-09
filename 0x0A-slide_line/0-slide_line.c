@@ -121,15 +121,13 @@ int move_left(int *line, size_t size)
  * Return: 1 success otherwise 0
  *
  */
+
 int slide_line(int *line, size_t size, int direction)
 {
-	if (direction == SLIDE_RIGHT)
-	{
-		return (move_right(line, size));
-	}
+
 	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
-	{
 		return (0);
-	}
-	return (move_left(line, size));
+	if (direction == SLIDE_LEFT)
+		return (move_left(line, size));
+	return (move_right(line, size));
 }
