@@ -2,11 +2,13 @@
 
 import sys
 
+
 def solve(row, column):
     solver = [[]]
     for q in range(row):
         solver = place_queen(q, column, solver)
     return solver
+
 
 def place_queen(q, column, prev_solver):
     solver_queen = []
@@ -15,6 +17,7 @@ def place_queen(q, column, prev_solver):
             if is_safe(q, x, array):
                 solver_queen.append(array + [x])
     return solver_queen
+
 
 def is_safe(q, x, array):
     if x in array:
@@ -37,6 +40,7 @@ def init():
         print("N must be at least 4")
         sys.exit(1)
     return(the_queen)
+
 
 def n_queens():
 
