@@ -15,7 +15,7 @@ avl_t *binary_tree_node(avl_t *parent, size_t n)
 
 	new_node = malloc(sizeof(avl_t));
 	if (!new_node)
-		return NULL;
+		return (NULL);
 	new_node->n = n;
 	new_node->left = NULL;
 	new_node->right = NULL;
@@ -36,11 +36,11 @@ avl_t *insert_node(int *array, size_t first, size_t last, avl_t *parent)
 	avl_t *root_node;
 
 	if (first > last)
-		return NULL;
+		return (NULL);
 	mid = (first + last) / 2;
 	root_node = binary_tree_node(parent, array[mid]);
 	if (!root_node)
-		return NULL;
+		return (NULL);
 	if (mid != first)
 		root_node->left = insert_node(array, first, mid - 1, root_node);
 	if (mid != last)
@@ -57,6 +57,6 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 
 	if (array == NULL)
-		return NULL;
+		return (NULL);
 	return (insert_node(array, 0, size - 1, NULL));
 }
