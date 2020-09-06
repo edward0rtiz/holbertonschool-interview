@@ -12,8 +12,8 @@ void swap(int *val_a, int *val_b)
 	int v1 = *val_a;
 	int v2 = *val_b;
 
-	*v1 = v2;
-	*v2 = v1;
+	*val_a = v2;
+	*val_b = v1;
 }
 
 /**
@@ -38,7 +38,7 @@ void heapify(int *array, size_t size, size_t i, size_t total_size)
 
 	if (big != i)
 	{
-		swap(*array[i], *array[big]);
+		swap(&array[i], &array[big]);
 		print_array(array, total_size);
 		heapify(array, size, big, total_size);
 	}
@@ -54,12 +54,15 @@ void heap_sort(int *array, size_t size)
 	size_t i;
 	size_t total_size = size;
 
-	for (i = size / 2 - 1; (int)i >= 0; i--)
-		heapify(array, size, i, total_size);
-	for (i = size - 1; i > 0; i--)
+	if (array)
 	{
-		swap_int(*array[0], *array[i]);
-		print_array(array, size);
-		heapify(array, i, 0, total_size);
+		for (i = size / 2 - 1; (int)i >= 0; i--)
+			heapify(array, size, i, total_size);
+		for (i = size - 1; i > 0; i--)
+		{
+			swap(&array[0], &array[i]);
+			print_array(array, size);
+			heapify(array, i, 0, total_size);
+		}
 	}
 }
