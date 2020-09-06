@@ -16,6 +16,14 @@ void swap(int *val_a, int *val_b)
 	*v2 = v1;
 }
 
+/**
+ * heapify - binary sort
+ * @array: type pointer of the array
+ * @size: type size_t size
+ * @i: type size_t posiition
+ * @total_size: type size_t total size of the array
+ */
+
 void heapify(int *array, size_t size, size_t i, size_t total_size)
 {
 	size_t big = i;
@@ -23,7 +31,7 @@ void heapify(int *array, size_t size, size_t i, size_t total_size)
 	size_t right = 2 * i + 2;
 
 	if (left < size && array[left] > array[big])
-	       big = left;
+		big = left;
 
 	if (right < size && array[right] > array[big])
 		big = right;
