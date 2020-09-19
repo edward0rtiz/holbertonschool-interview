@@ -7,9 +7,12 @@ def count_words(subreddit, word_list, hot_list_titles=[], after='null'):
     """ returns a list containing the titles
     of all hot articles for a given subreddit.
     """
+    a = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) ' \
+        'AppleWebKit/537.36 (KHTML, like Gecko) ' \
+        'Chrome/84.0.4147.105 Safari/537.36'
     base_url = 'https://www.reddit.com/r/'
     url = base_url + subreddit + "/hot.json"
-    credentials = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"}
+    credentials = {'User-Agent': a}
     parameters = {"limit": "100", "after": after}
     response = requests.get(url,
                             headers=credentials,
