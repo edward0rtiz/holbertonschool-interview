@@ -13,7 +13,7 @@ void binary_tree_order(heap_t *tree, heap_t **node, size_t h, size_t level)
 		return;
 	if (h == level)
 		*node = tree;
-	level ++;
+	level++;
 	if (tree->left)
 		binary_tree_order(tree->left, node, h, level);
 	if (tree->right)
@@ -22,7 +22,7 @@ void binary_tree_order(heap_t *tree, heap_t **node, size_t h, size_t level)
 /**
  * binary_tree_height - measure the height f a binary tree
  * @tree: type pointer to the node
- * Retunr: height of the tree from the node
+ * Return: height of the tree from the node
  **/
 size_t binary_tree_height(const heap_t *tree)
 {
@@ -60,7 +60,7 @@ int heap_extract(heap_t **root)
 		free(aux);
 		return (value);
 	}
-	binary_tree_order (aux, &node, binary_tree_height(aux), level);
+	binary_tree_order(aux, &node, binary_tree_height(aux), level);
 	while (aux->left || aux->right)
 	{
 		if (!aux->right || aux->left->n > aux->right->n)
