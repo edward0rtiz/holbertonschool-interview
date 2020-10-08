@@ -73,7 +73,7 @@ int heap_extract(heap_t **root)
 		else if (!aux->left || aux->left->n < aux->right->n)
 		{
 			value_aux = aux->n;
-			aux->n = aux->left->n;
+			aux->n = aux->right->n;
 			aux->right->n = value_aux;
 			aux = aux->right;
 		}
