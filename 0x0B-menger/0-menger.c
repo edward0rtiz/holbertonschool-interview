@@ -24,7 +24,9 @@ void menger(int level)
 }
 /**
  * get_character - get the character
- * @level: level of the menger sponge
+ * @row: get the row
+ * @col: get the col
+ * Return: #
  */
 char get_character(int row, int col)
 {
