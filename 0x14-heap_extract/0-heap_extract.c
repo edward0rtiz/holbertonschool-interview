@@ -1,13 +1,13 @@
 #include "binary_trees.h"
 /**
- * binary_tree_preorder - goes through a binary tree using pre-order traversal
- * @tree: pointer to root
- * @node: pointer to node in the tree
- * @h: height of the tree
- * @level: layer in the tree
- * Return: no return
+ * binary_tree_order - iterates over a binary tree
+ * @tree: type pointer to root
+ * @node: type pointer to node in the tree
+ * @h: height of tree
+ * @level: layer at tree
+ * Return: none
  **/
-void binary_tree_preorder(heap_t *tree, heap_t **node, size_t h, size_t level)
+void binary_tree_order(heap_t *tree, heap_t **node, size_t h, size_t level)
 {
 	if (!tree)
 		return;
@@ -15,14 +15,14 @@ void binary_tree_preorder(heap_t *tree, heap_t **node, size_t h, size_t level)
 		*node = tree;
 	level++;
 	if (tree->left)
-		binary_tree_preorder(tree->left, node, h, level);
+		binary_tree_order(tree->left, node, h, level);
 	if (tree->right)
-		binary_tree_preorder(tree->right, node, h, level);
+		binary_tree_order(tree->right, node, h, level);
 }
 /**
- * binary_tree_height - measures the height of a binary tree
- * @tree: pointer to the node
- * Return: height of the tree from node
+ * binary_tree_height - measure the height f a binary tree
+ * @tree: type pointer to the node
+ * Return: height of the tree from the node
  **/
 size_t binary_tree_height(const heap_t *tree)
 {
@@ -40,8 +40,8 @@ size_t binary_tree_height(const heap_t *tree)
 		return (right);
 }
 /**
- * heap_extract - extracts the root node from a Max Binary Heap
- * @root: pointer to the heap root
+ * heap_extract - extracts the root node from a max binary heap
+ * @root: type pointer to heap root
  * Return: value of extracted node
  **/
 int heap_extract(heap_t **root)
@@ -60,7 +60,7 @@ int heap_extract(heap_t **root)
 		free(aux);
 		return (value);
 	}
-	binary_tree_preorder(aux, &node, binary_tree_height(aux), level);
+	binary_tree_order(aux, &node, binary_tree_height(aux), level);
 	while (aux->left || aux->right)
 	{
 		if (!aux->right || aux->left->n > aux->right->n)
@@ -73,11 +73,10 @@ int heap_extract(heap_t **root)
 		else if (!aux->left || aux->left->n < aux->right->n)
 		{
 			value_aux = aux->n;
-			aux->n = aux->right->n;
+			aux->n = aux->left->n;
 			aux->right->n = value_aux;
 			aux = aux->right;
 		}
-
 	}
 	aux->n = node->n;
 	if (node->parent->right)
